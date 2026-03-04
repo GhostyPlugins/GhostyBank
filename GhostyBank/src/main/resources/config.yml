@@ -1,0 +1,58 @@
+# GhostyBank Configuration
+# Supports & color codes and &#RRGGBB hex color codes
+
+# Language: de_DE or en_US (or custom file name without .yml)
+language: de_DE
+
+# Currency format
+currency-symbol: "$"
+currency-format: "#,##0.00"
+
+# Withdrawal fee in percent (e.g. 5 = 5% fee when withdrawing)
+withdrawal-fee: 5.0
+
+# Interest is paid every X minutes (default: 60 = once per hour)
+interest-interval-minutes: 60
+
+# Starting balance when a player joins for the first time
+starting-balance: 0.0
+
+# Bank Levels Configuration
+# max-deposit: -1 = unlimited
+# upgrade-cost: -1 = max level (cannot upgrade further)
+# interest-rate: decimal (0.01 = 1% per interval)
+# You can add as many levels as you want!
+bank-levels:
+  1:
+    display-name: "&#CD7F32Bronze"
+    max-deposit: 10000.0
+    interest-rate: 0.01
+    upgrade-cost: 5000.0
+  2:
+    display-name: "&7Silber"
+    max-deposit: 50000.0
+    interest-rate: 0.02
+    upgrade-cost: 25000.0
+  3:
+    display-name: "&#FFD700Gold"
+    max-deposit: 200000.0
+    interest-rate: 0.03
+    upgrade-cost: 100000.0
+  4:
+    display-name: "&#E5E4E2Platin"
+    max-deposit: 1000000.0
+    interest-rate: 0.05
+    upgrade-cost: 500000.0
+  5:
+    display-name: "&#B9F2FFDiamond"
+    max-deposit: -1
+    interest-rate: 0.08
+    upgrade-cost: -1
+
+# GUI Settings
+# bank-rows: 5 recommended (4 content + 1 separator row at bottom)
+gui:
+  bank-rows: 5
+  pay-rows: 6
+  balance-rows: 3
+  top-rows: 5
