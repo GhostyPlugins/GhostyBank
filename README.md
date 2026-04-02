@@ -12,7 +12,7 @@ Supports **Minecraft 1.21 – 1.21.11** (Paper & Spigot).
 * Transfer money between players
 * Secure account system
 * Supports `&` and HEX color codes
-* No database required
+* Database and data.yml support
 * Low performance impact
 * Fully customizable language files
 * English & German support
