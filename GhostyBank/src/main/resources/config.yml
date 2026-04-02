@@ -1,0 +1,106 @@
+# ─────────────────────────────────────────────
+# GhostyBank Configuration
+# Supports & color codes and &#RRGGBB hex colors
+# ─────────────────────────────────────────────
+
+# Language: de_DE or en_US (or custom file name without .yml)
+language: de_DE
+
+# Currency symbol and format
+currency-symbol: "$"
+currency-format: "#,##0.00"
+
+# Withdrawal fee in percent (e.g. 5.0 = 5%)
+withdrawal-fee: 5.0
+
+# Starting balance for new players
+starting-balance: 0.0
+
+# Notify online admins (ghostybank.admin) when a player changes their name
+notify-admins-on-rename: true
+
+# ─────────────────────────────────────────────
+# STORAGE
+# type: yaml  → Saves to plugins/GhostyBank/data.yml (default, no DB needed)
+# type: mysql → Saves to a MySQL database
+# ─────────────────────────────────────────────
+storage:
+  type: yaml
+
+  mysql:
+    host: localhost
+    port: 3306
+    database: ghostybank
+    username: root
+    password: ""
+    use-ssl: false
+    # Maximum simultaneous database connections
+    pool-size: 10
+
+# ─────────────────────────────────────────────
+# INTEREST SETTINGS
+# ─────────────────────────────────────────────
+interest:
+  # Enable or disable the entire interest system
+  enabled: true
+
+  # Interest interval in minutes (default: 60 = once per hour)
+  interval-minutes: 60
+
+  # Maximum total interest a player can earn per bank level.
+  # Once the cap is reached, no more interest is paid until the player upgrades.
+  # Set enabled: false to disable the cap globally for all levels.
+  # Per-level cap is configured in bank-levels below (max-total-interest).
+  max-total-interest-cap:
+    enabled: false
+
+# ─────────────────────────────────────────────
+# BANK LEVELS
+# max-deposit:        -1 = unlimited
+# upgrade-cost:       -1 = max level (cannot upgrade)
+# interest-rate:      decimal, e.g. 0.01 = 1% per interval
+# max-total-interest: Maximum total interest earnable on this level.
+#                     -1 = unlimited. Only active when interest.max-total-interest-cap.enabled: true
+# Add as many levels as you want!
+# ─────────────────────────────────────────────
+bank-levels:
+  1:
+    display-name: "&#CD7F32Bronze"
+    max-deposit: 10000.0
+    interest-rate: 0.01
+    upgrade-cost: 5000.0
+    max-total-interest: 5000.0
+  2:
+    display-name: "&7Silber"
+    max-deposit: 50000.0
+    interest-rate: 0.02
+    upgrade-cost: 25000.0
+    max-total-interest: 25000.0
+  3:
+    display-name: "&#FFD700Gold"
+    max-deposit: 200000.0
+    interest-rate: 0.03
+    upgrade-cost: 100000.0
+    max-total-interest: 100000.0
+  4:
+    display-name: "&#E5E4E2Platin"
+    max-deposit: 1000000.0
+    interest-rate: 0.05
+    upgrade-cost: 500000.0
+    max-total-interest: 500000.0
+  5:
+    display-name: "&#B9F2FFDiamond"
+    max-deposit: -1
+    interest-rate: 0.08
+    upgrade-cost: -1
+    max-total-interest: -1
+
+# ─────────────────────────────────────────────
+# GUI SETTINGS
+# bank-rows: 5 recommended (4 content rows + 1 separator row at bottom)
+# ─────────────────────────────────────────────
+gui:
+  bank-rows: 5
+  pay-rows: 6
+  balance-rows: 3
+  top-rows: 5

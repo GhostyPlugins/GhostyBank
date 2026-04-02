@@ -1,0 +1,465 @@
+# GhostyBank - English (en_US)
+# Color codes: &x or &#RRGGBB for hex colors
+
+prefix: "&8[&6&#FFD700Bank&6&8] "
+no-permission: "&cYou don't have permission for this command."
+player-not-found: "&cPlayer &e%player% &cwas not found."
+player-not-online: "&cThis player is not online right now."
+no-bank-account: "&cThis player doesn't have a bank account yet."
+not-enough-money: "&cYou don't have enough money in your bank."
+not-enough-wallet: "&cYou don't have enough money in your wallet."
+invalid-amount: "&cPlease enter a valid amount."
+amount-too-low: "&cThe amount must be greater than 0."
+cannot-pay-self: "&cYou cannot transfer money to yourself."
+action-cancelled: "&cAction cancelled."
+rename-detected: "&8[Admin] &ePlayer &b%old_name% &ehas been renamed to &b%new_name%&e."
+reload-success: "&aGhostyBank has been successfully reloaded!"
+
+deposit-success: "&aSuccessfully deposited &e%amount% &ainto your bank."
+withdraw-success: "&aSuccessfully withdrew &e%amount% &afrom your bank. &7(Fee: &c%fee%&7)"
+deposit-limit-reached: "&cYour account can hold a maximum of &e%max_deposit%&c. Upgrade your bank!"
+deposit-amount-prompt: "&eEnter the amount you want to deposit (or 'cancel'):"
+withdraw-amount-prompt: "&eEnter the amount you want to withdraw (or 'cancel'):"
+pay-amount-prompt: "&eEnter the amount you want to pay &b%player% &e(or 'cancel'):"
+pay-success: "&aSuccessfully transferred &e%amount% &ato &b%receiver%."
+pay-received: "&b%player% &ahas sent you &e%amount%."
+
+interest-cap-reached: "&eInterest cap reached! You have earned the maximum interest of &a%max% &eat level &6%level_name%&e. Upgrade your bank to keep earning interest!"
+interest-earned: "&a💰 Interest credited: &e+%amount% &a(Bank Level %level%)"
+
+upgrade-success: "&aYour bank was upgraded to &6%level_name%&a!"
+upgrade-max-level: "&cYou are already at the maximum bank level!"
+upgrade-not-enough-money: "&cYou need &e%upgrade_cost% &cin your bank to upgrade."
+
+# ── Admin ─────────────────────────────────────
+admin-usage: "&cUsage: &e/gadmin <player> [info|addmoney|removemoney|setmoney|setlevel] [value]"
+admin-player-not-found: "&cPlayer not found. Enter the exact name."
+admin-info: "&8[Admin] &b%player% &7| Balance: &a%balance% &7| Level: &e%level% (%level_name%) &7| Interest: &a%total_interest%"
+admin-add-prompt: "&eHow much money do you want to add to &b%player%&e? (or 'cancel')"
+admin-set-prompt: "&eWhat do you want to set &b%player%&e's balance to? (or 'cancel')"
+admin-remove-prompt: "&eHow much money do you want to remove from &b%player%&e? (or 'cancel')"
+admin-setlevel-prompt: "&eWhat level do you want to set for &b%player%&e? (1-%max_level%, or 'cancel')"
+admin-add-success: "&a[Admin] Added &e%amount% &ato &b%player%."
+admin-set-success: "&a[Admin] Set &b%player%&a's balance to &e%amount%."
+admin-remove-success: "&a[Admin] Removed &e%amount% &afrom &b%player%."
+admin-setlevel-success: "&a[Admin] Set &b%player%&a's level to &6%level_name%."
+admin-setlevel-invalid: "&cInvalid level. Allowed: 1 to %max_level%."
+admin-reset-success: "&a[Admin] Player &b%player% &ahas been completely reset."
+admin-delete-success: "&a[Admin] Player &b%player% &ahas been deleted from all rankings."
+admin-reset-notify: "&c⚠ Your bank account has been reset by an admin."
+admin-delete-notify: "&c⚠ Your bank account has been deleted by an admin. You will receive a new account on your next login."
+
+
+# ─────────────────────────────────────────────
+# ADMIN CONFIRM GUI
+# ─────────────────────────────────────────────
+admin-confirm:
+  title: "&#FF4444⚠ Confirmation &7| &b%player%"
+  action-reset: "Reset"
+  action-delete: "Delete"
+
+  yes-material: LIME_STAINED_GLASS_PANE
+  yes-name: "&a✔ Yes, confirm"
+  yes-lore:
+    - "&7Action: &e%action%"
+    - "&7Player: &b%player%"
+    - ""
+    - "&cThis action cannot be undone!"
+    - ""
+    - "&eClick to confirm"
+
+  no-material: RED_STAINED_GLASS_PANE
+  no-name: "&c✘ No, cancel"
+  no-lore:
+    - "&7Back to admin GUI"
+
+# ─────────────────────────────────────────────
+# BANK GUI (/bank)
+# ─────────────────────────────────────────────
+bank-gui:
+  title: "&#FFD700✦ &6Your Bank &7| Level &e%level%"
+
+  balance-item-material: GOLD_INGOT
+  balance-item-slot: 11
+  balance-item-name: "&#FFD700Balance"
+  balance-item-lore:
+    - "&7Current balance:"
+    - "&a%balance%"
+    - ""
+    - "&7Maximum deposit:"
+    - "&e%max_deposit%"
+
+  level-item-material: NETHER_STAR
+  level-item-slot: 13
+  level-item-name: "&#E5E4E2Bank Level"
+  level-item-lore:
+    - "&7Your current level:"
+    - "%level_name% &7(Level &e%level%&7)"
+    - ""
+    - "&7Interest rate: &a%interest_rate%% &7/ hour"
+
+  upgrade-item-material: EXPERIENCE_BOTTLE
+  upgrade-item-slot: 15
+  upgrade-item-name: "&aUpgrade Bank"
+  upgrade-item-lore:
+    - "&7Upgrade to the next level"
+    - "&7Cost: &e%upgrade_cost%"
+    - ""
+    - "&eClick to upgrade"
+  upgrade-item-maxlevel-lore:
+    - "&7You are already at the"
+    - "&7maximum level!"
+
+  deposit-item-material: LIME_DYE
+  deposit-item-slot: 29
+  deposit-item-name: "&aDeposit"
+  deposit-item-lore:
+    - "&7Deposit money into your bank"
+    - ""
+    - "&eClick to deposit"
+
+  withdraw-item-material: RED_DYE
+  withdraw-item-slot: 33
+  withdraw-item-name: "&cWithdraw"
+  withdraw-item-lore:
+    - "&7Withdraw money from your bank"
+    - "&7Withdrawal fee: &c%fee%%%"
+    - ""
+    - "&eClick to withdraw"
+
+  close-item-material: BARRIER
+  close-item-slot: 31
+  close-item-name: "&cClose"
+  close-item-lore:
+    - "&7Close this menu"
+
+  filler-material: GRAY_STAINED_GLASS_PANE
+  filler-name: " "
+  separator-material: BLACK_STAINED_GLASS_PANE
+  separator-name: " "
+
+# ─────────────────────────────────────────────
+# BALANCE GUI (/balance)
+# ─────────────────────────────────────────────
+balance-gui:
+  title: "&#FFD700✦ &6Account Overview &7| %player%"
+  title-self: "&#FFD700✦ &6Your Account"
+
+  balance-item-material: GOLD_NUGGET
+  balance-item-slot: 11
+  balance-item-name: "&#FFD700Current Balance"
+  balance-item-lore:
+    - "&7Balance in bank:"
+    - "&a%balance%"
+
+  interest-item-material: EMERALD
+  interest-item-slot: 13
+  interest-item-name: "&aInterest Earned"
+  interest-item-lore:
+    - "&7Total earned through interest:"
+    - "&a%total_interest%"
+    - ""
+    - "&7Interest earned at current level:"
+    - "&a%level_interest% &7/ &e%cap%"
+
+  max-deposit-item-material: CHEST
+  max-deposit-item-slot: 15
+  max-deposit-item-name: "&eMaximum Deposit"
+  max-deposit-item-lore:
+    - "&7You can deposit up to:"
+    - "&e%max_deposit%"
+    - ""
+    - "&7Interest rate: &a%interest_rate%% &7/ hour"
+
+  level-item-material: NETHER_STAR
+  level-item-slot: 22
+  level-item-name: "&#E5E4E2Bank Level"
+  level-item-lore:
+    - "&7Level: &e%level%"
+    - "&7Name: %level_name%"
+
+  close-item-material: BARRIER
+  close-item-slot: 26
+  close-item-name: "&cClose"
+  close-item-lore:
+    - "&7Close this menu"
+
+  filler-material: GRAY_STAINED_GLASS_PANE
+  filler-name: " "
+
+# ─────────────────────────────────────────────
+# PAY GUI (/pay)
+# ─────────────────────────────────────────────
+pay-gui:
+  title: "&#FFD700✦ &6Transfer Money"
+  player-select-title: "&#FFD700✦ &6Select Player"
+  amount-select-title: "&#FFD700✦ &6Amount for &b%player%"
+
+  player-head-name: "&b%player%"
+  player-head-lore:
+    - "&7Click to transfer money"
+    - "&7to &b%player%."
+
+  prev-page-material: ARROW
+  prev-page-name: "&aPrevious Page"
+  prev-page-lore:
+    - "&7Page %page% / %total%"
+  next-page-material: ARROW
+  next-page-name: "&aNext Page"
+  next-page-lore:
+    - "&7Page %page% / %total%"
+  page-info-material: PAPER
+  page-info-name: "&7Page &e%page% &7/ &e%total%"
+  page-info-lore: []
+
+  amount-items:
+    - slot: 10
+      amount: 100
+      material: GOLD_NUGGET
+      name: "&a100"
+    - slot: 11
+      amount: 500
+      material: GOLD_INGOT
+      name: "&a500"
+    - slot: 12
+      amount: 1000
+      material: GOLD_BLOCK
+      name: "&a1,000"
+    - slot: 13
+      amount: 5000
+      material: EMERALD
+      name: "&a5,000"
+    - slot: 14
+      amount: 10000
+      material: EMERALD_BLOCK
+      name: "&a10,000"
+    - slot: 15
+      amount: 50000
+      material: DIAMOND
+      name: "&a50,000"
+    - slot: 16
+      amount: 100000
+      material: DIAMOND_BLOCK
+      name: "&a100,000"
+
+  custom-amount-item-material: WRITABLE_BOOK
+  custom-amount-item-slot: 31
+  custom-amount-item-name: "&eCustom Amount"
+  custom-amount-item-lore:
+    - "&7Enter a custom amount"
+    - "&7in the chat."
+    - ""
+    - "&eClick to enter amount"
+
+  back-item-material: ARROW
+  back-item-slot: 27
+  back-item-name: "&cBack"
+  back-item-lore:
+    - "&7Back to player selection"
+
+  close-item-material: BARRIER
+  close-item-slot: 35
+  close-item-name: "&cClose"
+  close-item-lore:
+    - "&7Close this menu"
+
+  filler-material: GRAY_STAINED_GLASS_PANE
+  filler-name: " "
+
+# ─────────────────────────────────────────────
+# TOP GUI (/top)
+# ─────────────────────────────────────────────
+top-gui:
+  title: "&#FFD700✦ &6Bank Leaderboard"
+
+  tab-balance-material: GOLD_BLOCK
+  tab-balance-slot: 2
+  tab-balance-name: "&#FFD700Most Balance"
+  tab-balance-lore:
+    - "&7Show who has the most"
+    - "&7money in their bank"
+    - ""
+    - "&eClick to view"
+
+  tab-interest-material: EMERALD_BLOCK
+  tab-interest-slot: 4
+  tab-interest-name: "&aMost Interest Earned"
+  tab-interest-lore:
+    - "&7Show who has earned"
+    - "&7the most through interest"
+    - ""
+    - "&eClick to view"
+
+  tab-level-material: NETHER_STAR
+  tab-level-slot: 6
+  tab-level-name: "&#E5E4E2Highest Bank Level"
+  tab-level-lore:
+    - "&7Show who has the"
+    - "&7highest bank level"
+    - ""
+    - "&eClick to view"
+
+  entry-name: "&e#%rank% &7- &b%player%"
+  entry-balance-lore:
+    - "&7Balance: &a%balance%"
+    - "&7Level: %level_name%"
+  entry-interest-lore:
+    - "&7Interest Earned: &a%total_interest%"
+    - "&7Level: %level_name%"
+  entry-level-lore:
+    - "&7Bank Level: &e%level%"
+    - "&7Level Name: %level_name%"
+    - "&7Balance: &a%balance%"
+
+  close-item-material: BARRIER
+  close-item-slot: 40
+  close-item-name: "&cClose"
+  close-item-lore:
+    - "&7Close this menu"
+
+  filler-material: GRAY_STAINED_GLASS_PANE
+  filler-name: " "
+
+# ─────────────────────────────────────────────
+# UPGRADE GUI
+# ─────────────────────────────────────────────
+upgrade-gui:
+  title: "&#FFD700✦ &6Bank Upgrade"
+
+  current-level-item-material: GOLD_BLOCK
+  current-level-item-slot: 11
+  current-level-item-name: "&7Current Level"
+  current-level-item-lore:
+    - "%level_name% &7(Level &e%level%&7)"
+    - ""
+    - "&7Max. Deposit: &e%max_deposit%"
+    - "&7Interest rate: &a%interest_rate%% &7/ hr."
+
+  next-level-item-material: NETHER_STAR
+  next-level-item-slot: 15
+  next-level-item-name: "&aUpgrade to Next Level"
+  next-level-item-lore:
+    - "%next_level_name% &7(Level &e%next_level%&7)"
+    - ""
+    - "&7Max. Deposit: &e%next_max_deposit%"
+    - "&7Interest rate: &a%next_interest_rate%% &7/ hr."
+    - ""
+    - "&7Cost: &e%upgrade_cost%"
+    - ""
+    - "&eClick to upgrade"
+
+  confirm-item-material: LIME_DYE
+  confirm-item-slot: 29
+  confirm-item-name: "&a✔ Confirm"
+  confirm-item-lore:
+    - "&7Buy upgrade for &e%upgrade_cost%"
+
+  cancel-item-material: RED_DYE
+  cancel-item-slot: 33
+  cancel-item-name: "&c✘ Cancel"
+  cancel-item-lore:
+    - "&7Back to bank"
+
+  filler-material: GRAY_STAINED_GLASS_PANE
+  filler-name: " "
+
+# ─────────────────────────────────────────────
+# ADMIN GUI (/gadmin <player>)
+# ─────────────────────────────────────────────
+admin-gui:
+  title: "&#FFD700✦ &4Admin &7| &b%player%"
+
+  player-head-slot: 4
+  player-head-name: "&b%player%"
+  player-head-lore:
+    - "&7Balance: &a%balance%"
+    - "&7Level: &e%level% &7(%level_name%&7)"
+    - "&7Interest earned: &a%total_interest%"
+    - "&7Max. Deposit: &e%max_deposit%"
+
+  add-money-slot: 11
+  add-money-material: LIME_STAINED_GLASS_PANE
+  add-money-name: "&a+ Add Money"
+  add-money-lore:
+    - "&7Add money to the bank account"
+    - ""
+    - "&eClick to add"
+
+  set-money-slot: 13
+  set-money-material: YELLOW_STAINED_GLASS_PANE
+  set-money-name: "&eSet Money"
+  set-money-lore:
+    - "&7Set the bank account to"
+    - "&7a specific amount"
+    - ""
+    - "&eClick to set"
+
+  remove-money-slot: 15
+  remove-money-material: RED_STAINED_GLASS_PANE
+  remove-money-name: "&c- Remove Money"
+  remove-money-lore:
+    - "&7Remove money from the bank account"
+    - ""
+    - "&eClick to remove"
+
+  set-level-slot: 22
+  set-level-material: NETHER_STAR
+  set-level-name: "&6Set Level"
+  set-level-lore:
+    - "&7Current Level: &e%level% &7(%level_name%&7)"
+    - "&7Allowed: &e1 &7to &e%max_level%"
+    - ""
+    - "&eClick to set"
+
+
+  reset-slot: 20
+  reset-material: ORANGE_STAINED_GLASS_PANE
+  reset-name: "&6⟳ Reset Player"
+  reset-lore:
+    - "&7Resets balance, interest and level"
+    - "&7of &b%player% &7to defaults"
+    - ""
+    - "&c⚠ Player stays in database"
+    - "&c   (new empty account)"
+    - ""
+    - "&eClick to reset"
+
+  delete-slot: 24
+  delete-material: RED_STAINED_GLASS_PANE
+  delete-name: "&c✗ Delete Player"
+  delete-lore:
+    - "&7Removes &b%player% &7completely"
+    - "&7from all rankings and the database"
+    - ""
+    - "&c⚠ New empty account on next login"
+    - ""
+    - "&eClick to delete"
+
+  close-slot: 31
+  close-material: BARRIER
+  close-name: "&cClose"
+  close-lore:
+    - "&7Close this menu"
+
+  filler-material: GRAY_STAINED_GLASS_PANE
+  filler-name: " "
+
+# ─────────────────────────────────────────────
+# ADMIN CONFIRM GUI
+# ─────────────────────────────────────────────
+admin-confirm-gui:
+  title: "&#FFD700✦ &4Confirm &7| &b%player%"
+
+  yes-material: LIME_DYE
+  yes-name: "&a✔ Yes, execute"
+  yes-lore:
+    - "&7Action: &e%action%"
+    - "&7Player: &b%player%"
+    - ""
+    - "&cThis action cannot"
+    - "&cbe undone!"
+
+  no-material: RED_DYE
+  no-name: "&c✘ Cancel"
+  no-lore:
+    - "&7Back to admin overview"

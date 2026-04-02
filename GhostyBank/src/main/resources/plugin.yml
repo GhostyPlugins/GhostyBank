@@ -1,0 +1,53 @@
+name: GhostyBank
+version: 1.0.0
+main: ghostybank.GhostyBank
+api-version: "1.21"
+author: GhostyBank
+description: A full-featured bank plugin with GUI, interest, levels and more.
+depend:
+  - Vault
+softdepend:
+  - Essentials
+
+commands:
+  bank:
+    description: Opens your bank GUI.
+    usage: /bank
+    permission: ghostybank.bank
+  balance:
+    description: Shows your bank balance info.
+    usage: /balance [player]
+    permission: ghostybank.balance
+  pay:
+    description: Opens the pay GUI to transfer money.
+    usage: /pay [player] [amount]
+    permission: ghostybank.pay
+  top:
+    description: Shows the bank leaderboard.
+    usage: /top
+    permission: ghostybank.top
+  gadmin:
+    description: Admin commands for GhostyBank.
+    usage: /gadmin <player> [info|addmoney|removemoney|setmoney|setlevel|reset|delete] [value]
+    permission: ghostybank.admin
+  greload:
+    description: Reloads GhostyBank config and language files.
+    usage: /greload
+    permission: ghostybank.admin
+
+permissions:
+  ghostybank.bank:
+    description: Allows use of /bank
+    default: true
+  ghostybank.balance:
+    description: Allows use of /balance
+    default: true
+  ghostybank.pay:
+    description: Allows use of /pay
+    default: true
+  ghostybank.top:
+    description: Allows use of /top
+    default: true
+  ghostybank.admin:
+    description: Admin permissions for GhostyBank
+    default: op
